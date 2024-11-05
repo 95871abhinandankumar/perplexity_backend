@@ -14,10 +14,10 @@ class QueryView(APIView):
     def post(self, request):
         user_query = request.data.get('query')
         print("User query:", user_query)
-        # Check if the saved data status is 200
+        # Check if the saved data status is 200 or saved data is present
         saved_answer = Answer.objects.filter(query__user_query=user_query).first()
         print("Saved answer:", saved_answer)
-        if saved_answer.status == 200:
+        if saved_answer and saved_answer.status == 200:
             # Return the response with answer and sources
             return Response({
             'query': query.user_query,

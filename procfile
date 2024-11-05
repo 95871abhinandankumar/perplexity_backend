@@ -1,0 +1,1 @@
+web gunicorn perplexity_backend.wsgi:application --log-file -
